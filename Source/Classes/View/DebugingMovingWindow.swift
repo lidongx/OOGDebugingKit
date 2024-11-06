@@ -1,49 +1,24 @@
 //
-//  DebugingButtonWindow.swift
-//  TestSPM
+//  DebugingMovingWindow.swift
+//  OOGDebugingKit
 //
-//  Created by lidong on 2024/4/17.
+//  Created by lidong on 2024/10/28.
 //
 
 import Foundation
 import UIKit
-import SnapKit
-import Components
 
-fileprivate struct PadddingOffset {
+struct PadddingOffset {
     var top:CGFloat
     var bottom:CGFloat
     var left:CGFloat
     var right:CGFloat
 }
-class DebugingButtonWindow: UIWindow {
 
-    private let offset = PadddingOffset(
-        top: SafeArea.top+30,
-        bottom: SafeArea.bottom+30,
-        left: 30,
-        right: 30
-    )
+class DebugingMovingWindow : UIWindow {
+    
     private var beginPoint: CGPoint = .zero
     private var prevPoint: CGPoint = .zero
-    
-    var onActionAction:((DebugingButtonWindow)->Void)? = nil
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.isUserInteractionEnabled = true
-        addSubview(icon)
-        icon.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        adjustPosition()
-    }
-    
-    lazy var icon: UIImageView = {
-        let res = UIImageView(frame: CGRect(x: 0, y: 100, width: 60, height: 60))
-        res.image = UIImage(named: "kit.png")
-        return res
-    }()
     
     /// 点击开始
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -77,29 +52,18 @@ class DebugingButtonWindow: UIWindow {
         let deltaY = beginPoint.y - curPoint.y
         // 使用 Pythagoras 定理计算距离
         let distance = sqrt(deltaX * deltaX + deltaY * deltaY)
-        //移动距离小判定为点击
-        if distance < 5 {
-            onActionAction?(self)
-        }else{
-            adjustPosition()
-        }
+        
+        handleTouchesEnd(distance: distance)
+        
+//        //移动距离小判定为点击
+//        if distance < 5 {
+//            onActionAction?(self)
+//        }else{
+//            adjustPosition()
+//        }
     }
-    /// 修正位置 动画吸附在屏幕两侧
-    func adjustPosition() {
-        let screenWidth = fullScreenWidth()
-        let screenHeight = fullScreenHeight()
-        let rect = CGRect(
-            x: offset.left,
-            y: offset.top,
-            width: screenWidth-offset.left-offset.right,
-            height: screenHeight-offset.top-offset.bottom
-        )
-        if !rect.contains(self.center) {
-            let targetPoint = movePointToRectEdge(self.center, within: rect)
-            UIView.animate(withDuration: 0.25) {
-                self.center = targetPoint
-            }
-        }
+    
+    func handleTouchesEnd(distance:CGFloat) {
     }
     
     func movePointToRectEdge(_ point: CGPoint, within rect: CGRect) -> CGPoint {
@@ -116,9 +80,4 @@ class DebugingButtonWindow: UIWindow {
         }
         return newPoint
     }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }
-

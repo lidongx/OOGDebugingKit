@@ -13,11 +13,12 @@ class DebugingComponents {
     static var sections:[Section] = [
         .init(title: "常用工具", types: [
             .appInfo,
-            .events
+            .events,
+            .setting,
+            .crash
         ])
     ]
 }
-
 
 struct Section {
     var title:String
@@ -28,10 +29,11 @@ struct Section {
     }
 }
 
-
 enum ComponentType{
    case appInfo
    case events
+   case setting
+   case crash
     
     var title:String{
         switch self {
@@ -39,6 +41,10 @@ enum ComponentType{
             return "App信息"
         case .events:
             return "Events事件"
+        case .setting:
+            return "设置"
+        case .crash:
+            return "Crash"
         }
     }
     
@@ -48,6 +54,10 @@ enum ComponentType{
             return "appinfo.png"
         case .events:
             return "events.png"
+        case .setting:
+            return "setting.png"
+        case .crash:
+            return "crash.png"
         }
     }
     
@@ -57,6 +67,10 @@ enum ComponentType{
             return DebugingAppInfoViewController()
         case .events:
             return DebugingEventsViewController()
+        case .setting:
+            return DebugingSettingViewController()
+        case .crash:
+            return DebugingCrashViewController()
         }
     }
     

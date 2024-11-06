@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import Components
 
-class DebugingViewController : UIViewController{
+class DebugingViewController : DebugingBaseViewController{
     
     var dataSource = DebugingComponents.sections
     
@@ -35,25 +35,11 @@ class DebugingViewController : UIViewController{
     func loadUI(){
         self.navigationController?.navigationBar.addSubview(leftButton)
         leftButton.centerY = leftButton.superview!.height/2
-        self.view.backgroundColor = .white
-
-        self.view.addSubview(lineView)
-        lineView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.height.equalTo(1)
-        }
         self.view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
-    
-    lazy var lineView: UIView = {
-        let res = UIView(frame: .zero)
-        res.backgroundColor = .lightGray
-        return res
-    }()
     
     lazy var leftButton: UIButton = {
         let res = UIButton(type: .close)
@@ -185,7 +171,7 @@ public class CollectionItemCell : UICollectionViewCell {
     }
     
     func display(_ type:ComponentType){
-        icon.image = UIImage(named: type.icon)
+        icon.image = UIImage(named: type.icon)?.with(.orange)
         titleLabel.text = type.title
         titleLabel.sizeToFit()
     }

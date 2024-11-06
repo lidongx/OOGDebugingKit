@@ -27,6 +27,10 @@ extension UIWindow {
         self.customMakeKeyAndVisible()
         UIWindow.main = self
         UIWindow.debugingButtonWindow.isHidden = false
+        
+        if DebugingSettings.showWindow {
+            UIWindow.panelWindow.isHidden = false
+        }
     }
     
     private static var debugingWindow: DebugingWindow = {
@@ -42,8 +46,8 @@ extension UIWindow {
         return res
     }()
     
-    private static var debugingButtonWindow: DebugingButtonWindow = {
-        var res = DebugingButtonWindow(frame: CGRect(x: 0, y: 100, width: 60, height: 60))
+    static var debugingButtonWindow: DebugingButtonWindow = {
+        var res = DebugingButtonWindow(frame: CGRect(x: 0, y: 100, width: 100, height: 80))
         if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene{
             res.windowScene = scene
         }
@@ -56,5 +60,23 @@ extension UIWindow {
         res.isHidden = false
         return res
     }()
+    
+     static var panelWindow: DebugingPanelWindow = {
+        var res = DebugingPanelWindow(
+            frame: CGRect(
+                x: fullScreenWidth()/2 - 150,
+                y: 300,
+                width: 300,
+                height: DebugingPanelWindow.windowHieght
+            )
+        )
+        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene{
+            res.windowScene = scene
+        }
+        res.windowLevel = .statusBar + 300
+        res.isHidden = false
+        return res
+    }()
+    
 }
 

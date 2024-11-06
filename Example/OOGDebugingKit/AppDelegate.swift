@@ -6,7 +6,8 @@
 //
 
 import UIKit
-
+import Components
+import FIREvents
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -14,8 +15,84 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
         
-        AppDelegate.setupDebugingKit()
+        OOGDebugingKit.setup(onlyDebug: true, otherButtonsConfig: [
+            .init(buttonText: "HILKLMNOPQ", callback: { btn in
+                Toast.message("Test1").show()
+            }),
+            
+            .init(buttonText: "Test2", callback: { btn in
+                Toast.message("Test2").show()
+            }),
+            
+            .init(buttonText: "Firebase", callback: { btn in
+                    Toast.message("Test2").show()
+            }),
+            
+                .init(buttonText: "Crash", callback: { btn in
+                    Toast.message("Test2").show()
+                }),
+            
+        ])
+        OOGDebugingKit.config.appID = "1241414124"
+        
+        OOGDebugingKit.config.mixpanelDeviceID = "1241414124124141412412414141241241414124124"
+        
+        OOGDebugingKit.addEvent(eventName: "OB Started", param: [
+            "111":"value",
+            "222":"value",
+            "333":true,
+            "number":5,
+            "country":"中国开发环境开发环境开发环境开发环境开发环境开发环境开发环境开发环境开发环境开发环境中国开发环境开发环境开发环境开发环境开发环境开发环境开发环境开发环境开发环境开发环境",
+            "开发环境":"Debug",
+            "手机系统":"ios 18"
+        ],platform: .mixpanel)
+        
+        DebugingEvents.addEvent(name: "OB Started", param: [
+            "111":"value",
+            "222":"value",
+            "333":true,
+            "number":5,
+            "country":"中国开发环境开发环境开发环境开发环境开发环境开发环境开发环境开发环境开发环境开发环境中国开发环境开发环境开发环境开发环境开发环境开发环境开发环境开发环境开发环境开发环境",
+            "开发环境":"Debug",
+            "手机系统":"ios 18"
+        ],platform: .firebase)
+        
+        
+        DebugingEvents.addEvent(name: "OB Started", param: [
+            "111":"value",
+            "222":"value",
+            "333":true,
+            "number":5,
+            "country":"中国开发环境开发环境开发环境开发环境开发环境开发环境开发环境开发环境开发环境开发环境中国开发环境开发环境开发环境开发环境开发环境开发环境开发环境开发环境开发环境开发环境",
+            "开发环境":"Debug",
+            "手机系统":"ios 18"
+        ],platform: .mixpanel)
+        
+        
+        DebugingEvents.addEvent(name: "OB Started", param: [
+            "111":"value",
+            "222":"value",
+            "333":true,
+            "number":5,
+            "country":"中国开发环境开发环境开发环境开发环境开发环境开发环境开发环境开发环境开发环境开发环境中国开发环境开发环境开发环境开发环境开发环境开发环境开发环境开发环境开发环境开发环境",
+            "开发环境":"Debug",
+            "手机系统":"ios 18"
+        ],platform: .firebase)
+        
+        OOGDebugingKit
+            .addEvent(eventName: "OB Started", param: [:],platform: .mixpanel)
+        
+        OOGDebugingKit
+            .addUserProperty(name: "user property",platform: .mixpanel)
+        
+        OOGDebugingKit
+            .addUserProperty(
+                name: "property2",
+                value: "tttt",
+                platform: .mixpanel
+            )
         
         return true
     }

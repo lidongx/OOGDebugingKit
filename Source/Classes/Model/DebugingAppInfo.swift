@@ -10,11 +10,25 @@ import Components
 import UIKit
 
 class DebugingAppInfos {
+    
+    static var environment:String {
+        #if AppStoreEnv
+            "App Store"
+        #else
+        #if DEBUG
+            "Debug"
+        #else
+            "Release"
+        #endif
+        #endif
+    }
+    
     static var sections:[DebugingAppInfoSection] = [
         .init(section: .phoneInfo, items: [
             .init(type: .device, value: UIDevice.current.deviceName),
             .init(type: .systemVersion, value: UIDevice.current.systemName+UIDevice.current.systemVersion),
             .init(type: .country, value: UIDevice.current.country),
+            .init(type: .networkStatus, value: "未知"),
             .init(type: .freeDiskSpace, value: UIDevice.current.freeDiskSpace()),
             .init(type: .usedDiskSpace, value: UIDevice.current.usedDiskSpace()),
             .init(type: .totalDiskSpace, value: UIDevice.current.totalDiskSpace()),
@@ -24,59 +38,39 @@ class DebugingAppInfos {
             .init(type: .appIdentifier, value: Bundle.main.bundleIdentifier),
             .init(type: .appVersion, value: Bundle.main.versionNumber),
             .init(type: .appBuildVersion, value: Bundle.main.buildNumber),
+            .init(type: .subscription, value: "未设置"),
+            .init(type: .environment, value: DebugingAppInfos.environment),
+            .init(type: .appMemoryUsage, value: "未设置"),
+            .init(type: .appDiskSpaceUsage, value: "未设置"),
+            .init(type: .fps, value: "未设置")
+
         ]),
 
         .init(section: .permissions, items: [
-            .init(type: .appIdentifier, value: Bundle.main.bundleIdentifier),
-            .init(type: .appVersion, value: Bundle.main.versionNumber),
-            .init(type: .appBuildVersion, value: Bundle.main.buildNumber),
+            .init(type: .notiAuth, value: "未设置"),
+            .init(type: .attAuth, value: "未设置")
         ]),
 
         .init(section: .ids, items: [
+            .init(type: .appID, value: "未设置"),
+            .init(type: .mixpanelToken, value: "未设置"),
+            .init(type: .mixpanelDeviceID, value: "未设置"),
+            .init(type: .statsigApiKey, value: "未设置"),
+            .init(type: .adaptyKey, value: "未设置"),
+            .init(type: .adaptyLevel, value: "未设置"),
+            .init(type: .supperWallKey, value: "未设置"),
+            .init(type: .oneSignalToken, value: "未设置"),
+            .init(type: .singularKey, value: "未设置"),
+            .init(type: .singularSecretKey, value: "未设置"),
+            
             .init(type: .idfa, value: UIDevice.current.idfa),
             .init(type: .idfv, value: UIDevice.current.idfv),
         ]),
 
         .init(section: .custom, items: [
-                
+            
         ])
     ]
-    
-    static func setAppID(_ appID:String) {
-        for section in sections where section.sectionType == .appInfo {
-            if let index = section.items.firstIndex(where: { $0.type == .appID }) {
-                section.items[index].value = appID
-            } else {
-                section.items.append(.init(type: .appID, value: appID))
-            }
-        }
-    }
-    
-    static func setSubscription(_ isActive: Bool) {
-        let value:String = isActive ? "True" : "False"
-        for section in sections where section.sectionType == .appInfo {
-            if let index = section.items.firstIndex(
-                where: { $0.type == .subscription
-                }) {
-                section.items[index].value = value
-            } else {
-                section.items.append(.init(type: .subscription, value: value))
-            }
-        }
-    }
-    
-    static func setCustom(name:String, value:String){
-        for section in sections where section.sectionType == .custom {
-            if let index = section.items.firstIndex(
-                where: { $0.type == .custom(name: name)
-                }) {
-                section.items[index].value = value
-            } else {
-                section.items
-                    .append(.init(type: .custom(name: name), value: value))
-            }
-        }
-    }
 }
 
 
@@ -107,7 +101,7 @@ public enum AppInfoType:Hashable{
     case device
     case systemVersion
     case country
-
+    case networkStatus
     case freeDiskSpace
     case usedDiskSpace
     case totalDiskSpace
@@ -115,15 +109,30 @@ public enum AppInfoType:Hashable{
     case appIdentifier
     case appVersion
     case appBuildVersion
+    case subscription
+    case environment
+    case appMemoryUsage
+    case appDiskSpaceUsage
+    case fps
 
     case appID
-    case subscription
-    case networkStatus
-    case mixpanelDistinctID
+    case mixpanelToken
     case mixpanelDeviceID
+    case statsigApiKey
+    case adaptyKey
+    case adaptyLevel
+    case supperWallKey
+    case oneSignalToken
+    case singularKey
+    case singularSecretKey
     
     case idfa
     case idfv
+    
+    
+    case notiAuth
+    case attAuth
+    
     
     case custom(name:String)
     
@@ -160,13 +169,39 @@ public enum AppInfoType:Hashable{
             "订阅状态"
         case .networkStatus:
             "网络状态"
-        case .mixpanelDistinctID:
-            "Mixpanel Distinct ID"
+        case .mixpanelToken:
+            "Mixpanel Token"
         case .mixpanelDeviceID:
-            "Mixpanel Device ID"
+            "Mixpanel DeviceID"
+        case .statsigApiKey:
+            "Statsig APIKey"
+        case .adaptyKey:
+            "Adapty Key"
+        case .adaptyLevel:
+            "Adapty Level"
+        case .supperWallKey:
+            "SupperWall Key"
+        case .oneSignalToken:
+            "OneSignal Token"
+        case .singularKey:
+            "Singular Key"
+        case .singularSecretKey:
+            "Singular SecretKey"
+        case .environment:
+            "开发环境"
+        case .notiAuth:
+            "通知权限"
+        case .attAuth:
+            "ATT权限"
         
         case .custom(let name):
             name
+        case .appMemoryUsage:
+            "内存使用量"
+        case .appDiskSpaceUsage:
+            "App占磁盘空间"
+        case .fps:
+            "帧率"
         }
     }
 }

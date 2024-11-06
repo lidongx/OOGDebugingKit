@@ -10,14 +10,10 @@ import Components
 import AdSupport
 import UIKit
 public extension UIDevice{
-    
     var idfv:String{
         return identifierForVendor?.uuidString ?? ""
     }
-    
-    
     var idfa:String{
         return ASIdentifierManager.shared().advertisingIdentifier.uuidString
     }
-    
 }
