@@ -31,7 +31,7 @@ OOGDebugingKit是替换掉UI界面上debug,crash,events等等一些按钮。
    ```
 
 3. 项目需要配置各种ID
-
+     ```
     OOGDebugingKit.config.appID = "1241414124"
     OOGDebugingKit.config.mixpanelToken
     OOGDebugingKit.config.mixpanelDeviceID
@@ -42,6 +42,7 @@ OOGDebugingKit是替换掉UI界面上debug,crash,events等等一些按钮。
     OOGDebugingKit.config.oneSignalToken
     OOGDebugingKit.config.singularKey
     OOGDebugingKit.config.singularSecretKey
+     ```
     
 4. 订阅状态和Events以及其它的一些状态是自动获取的
 
