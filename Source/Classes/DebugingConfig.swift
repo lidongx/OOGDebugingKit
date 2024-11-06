@@ -9,6 +9,7 @@ import Foundation
 
 public class DebugingConfig {
     
+    //这个是自动获取的,不需要人为设置
     public var subscriptionIsActive : Bool = false {
         didSet {
             DebugingAppInfos.setSubscription(subscriptionIsActive)
