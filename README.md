@@ -4,9 +4,9 @@ OOGDebugingKit是替换掉UI界面上debug,crash,events等等一些按钮。
 
 ## 引用
 
-1. 通过Cocospod引用，在Podfile中添加Components
+1. 通过Cocospod引用，在Podfile中添加OOGDebugingKit
     ```
-    pod 'Components','~> 0.1.10.3'
+    pod 'OOGDebugingKit','~> 1.0.0'
     ```
     
 2. 通过Swift Package Manager在Package.swift添加依赖
