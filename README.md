@@ -17,7 +17,9 @@ OOGDebugingKit是替换掉UI界面上debug,crash,events等等一些按钮。
     ```
 
 ## 使用
+
 1. 增加其它的自定义按钮
+   ```
     OOGDebugingKit.setup(onlyDebug: true, otherButtonsConfig: [
         .init(buttonText: "HILKLMNOPQ", callback: { btn in
             Toast.message("Test1").show()
@@ -26,8 +28,10 @@ OOGDebugingKit是替换掉UI界面上debug,crash,events等等一些按钮。
               Toast.message("Test2").show()
          }),
     ])
- 
-2. 项目需要配置各种ID
+   ```
+
+3. 项目需要配置各种ID
+
     OOGDebugingKit.config.appID = "1241414124"
     OOGDebugingKit.config.mixpanelToken
     OOGDebugingKit.config.mixpanelDeviceID
@@ -39,5 +43,5 @@ OOGDebugingKit是替换掉UI界面上debug,crash,events等等一些按钮。
     OOGDebugingKit.config.singularKey
     OOGDebugingKit.config.singularSecretKey
     
-3. 订阅状态和Events以及其它的一些状态是自动获取的
+4. 订阅状态和Events以及其它的一些状态是自动获取的
 
