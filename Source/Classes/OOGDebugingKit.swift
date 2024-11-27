@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 import Components
-import IAPManagerCore
+import IAPManager
 import FIREvents
 public class OOGDebugingKit {
     

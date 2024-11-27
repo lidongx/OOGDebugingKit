@@ -1,0 +1,44 @@
+{
+  "name": "OOGDebugingKit",
+  "version": "1.0.0",
+  "summary": "this is a util OOGDebugingKit for company",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://www.baidu.com/",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "lidong@smalltreemedia.com": "lidong@smalltreemedia.com"
+  },
+  "source": {
+    "git": "https://github.com/lidongx/OOGDebugingKit.git",
+    "tag": "1.0.0"
+  },
+  "platforms": {
+    "ios": "15.0"
+  },
+  "source_files": "Source/Classes/**/*",
+  "static_framework": true,
+  "swift_versions": "5.0",
+  "resource_bundles": {
+    "OOGDebugingKit": [
+      "Source/Assets/*.png"
+    ]
+  },
+  "dependencies": {
+    "Alamofire": [
+
+    ],
+    "Components": [
+      "~> 0.1.10"
+    ],
+    "FIREvents/Core": [
+
+    ],
+    "IAPManager/Core": [
+
+    ]
+  },
+  "swift_version": "5.0"
+}

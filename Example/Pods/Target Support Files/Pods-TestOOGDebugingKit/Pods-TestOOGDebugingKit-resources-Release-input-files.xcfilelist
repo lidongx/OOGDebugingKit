@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/Pods-TestOOGDebugingKit/Pods-TestOOGDebugingKit-resources.sh
+${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/OOGDebugingKit/OOGDebugingKit.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/SnapKit/SnapKit_Privacy.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/Toast-Swift/Toast-Swift.bundle

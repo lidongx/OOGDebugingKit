@@ -1,0 +1,1 @@
+../../../Target Support Files/IAPManager/IAPManager-umbrella.h

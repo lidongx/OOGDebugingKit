@@ -1,0 +1,6 @@
+module Pods_TestOOGDebugingKit {
+  umbrella header "Pods-TestOOGDebugingKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

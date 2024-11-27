@@ -1,0 +1,6 @@
+module FIREvents {
+  umbrella header "FIREvents-umbrella.h"
+
+  export *
+  module * { export * }
+}

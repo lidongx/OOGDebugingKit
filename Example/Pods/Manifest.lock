@@ -1,0 +1,48 @@
+PODS:
+  - Alamofire (5.10.1)
+  - Components (0.1.10.2):
+    - SnapKit
+    - Toast-Swift (~> 5.1.0)
+  - FIREvents (6.3.4):
+    - FIREvents/Core (= 6.3.4)
+  - FIREvents/Core (6.3.4)
+  - IAPManager/Core (11.4.8):
+    - Alamofire (~> 5.0)
+    - FIREvents (~> 6.3.0)
+  - OOGDebugingKit (1.0.0):
+    - Alamofire
+    - Components (~> 0.1.10)
+    - FIREvents/Core
+    - IAPManager/Core
+  - SnapKit (5.7.1)
+  - Toast-Swift (5.1.1)
+
+DEPENDENCIES:
+  - OOGDebugingKit (from `../`)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - SnapKit
+    - Toast-Swift
+  https://github.com/retro-labs/specs-ios-swift.git:
+    - Components
+    - FIREvents
+    - IAPManager
+
+EXTERNAL SOURCES:
+  OOGDebugingKit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Alamofire: 840d2a1ad82355b536ec6ba5f97e5bfa54600ca3
+  Components: f5f153b6e99b8a33bfaccd20b9375d8a85d1e4b8
+  FIREvents: 11334943e9104372677312b61c40e11677213c2a
+  IAPManager: 91ec718b4b2139dab394789e2bd3e78a106226f0
+  OOGDebugingKit: caeeeb295ea87949f83da341c1ee30c50d14d7a5
+  SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
+  Toast-Swift: 7a03a532afe3a560d4044bc7c237e2864d295173
+
+PODFILE CHECKSUM: 960ca70f6aae8c20c7619eef8637cb8ea4a6b3d1
+
+COCOAPODS: 1.16.0
