@@ -13,13 +13,17 @@ public enum DebugingEventsPlatform{
 }
 
 
-class DebugingEvents {
+public class DebugingEvents {
     static var mixpanelEvents:[DebugingEvent] = []
     static var firebaseEvents:[DebugingEvent] = []
     
     static var notificationKey = "DebugingEventsNotificationKey"
      
-    static func addEvent(name:String,param:[String:Any],platform:DebugingEventsPlatform){
+    public static func addEvent(
+        name:String,
+        param:[String:Any],
+        platform:DebugingEventsPlatform
+    ){
         
         if platform == .mixpanel {
             mixpanelEvents.append(.init(type: .event ,name: name, params: param))
@@ -28,7 +32,11 @@ class DebugingEvents {
         }
     }
     
-    static func addUserProperty(name:String,value:Any,platform:DebugingEventsPlatform){
+    public static func addUserProperty(
+        name:String,
+        value:Any,
+        platform:DebugingEventsPlatform
+    ){
         let valueString = "\(value)"
         if valueString.isEmpty {
             if platform == .mixpanel {
@@ -53,12 +61,15 @@ class DebugingEvents {
         }
     }
     
-    static func addUserProperty(name:String,platform:DebugingEventsPlatform){
+    public static func addUserProperty(
+        name:String,
+        platform:DebugingEventsPlatform
+    ){
         addUserProperty(name: name, value: "",platform: platform)
     }
 }
 
-enum DebugingEventType {
+public enum DebugingEventType {
     case event
     case userProperty
 }

@@ -1,6 +1,0 @@
-module OOGDebugingKit {
-  umbrella header "OOGDebugingKit-umbrella.h"
-
-  export *
-  module * { export * }
-}
