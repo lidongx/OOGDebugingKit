@@ -34,7 +34,7 @@ TODO: Add long description of the pod here.
 
 
    s.dependency 'Alamofire'
-   s.dependency 'Components','~> 0.1.10'
+   s.dependency 'Components','~> 0.1'
    s.dependency 'FIREvents/Core'
    s.dependency 'IAPManager/Core'
    
