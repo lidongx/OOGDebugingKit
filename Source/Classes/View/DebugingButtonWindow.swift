@@ -59,7 +59,11 @@ class DebugingButtonWindow: DebugingMovingWindow {
     
     lazy var icon: UIImageView = {
         let res = UIImageView(frame: CGRect(x: 0, y: 100, width: 60, height: 60))
-        res.image = UIImage(named: "kit.png")
+    
+        let bundle = Bundle(for: OOGDebugingKit.self)
+        if let imagePath = bundle.path(forResource: "kit.png", ofType: nil) {
+            res.image = UIImage(contentsOfFile: imagePath)
+        }
         return res
     }()
     

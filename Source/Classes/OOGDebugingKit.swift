@@ -17,22 +17,16 @@ public class OOGDebugingKit {
     private static var `default` = DebugingConfig()
     
     public static func setup(
-        onlyDebug: Bool = true,
         otherButtonsConfig:[DebugingOtherButtonConfig] = []
     ) {
         installed = true
-        if onlyDebug {
 #if DEBUG
-            initLoad()
-#endif
-        } else {
-            initLoad()
-        }
-        
+        initLoad()
         DebugingOtherButtonConfigs.items = otherButtonsConfig
+#endif
+       
     }
-    
-    
+
     private static func initLoad(){
         UIWindow.swizzle
         NetworkMonitor.setup()
