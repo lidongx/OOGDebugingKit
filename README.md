@@ -6,13 +6,13 @@ OOGDebugingKit是替换掉UI界面上debug,crash,events等等一些按钮。
 
 1. 通过Cocospod引用，在Podfile中添加OOGDebugingKit
     ```
-    pod 'OOGDebugingKit','~> 1.0.0'
+    pod 'OOGDebugingKit','~> 1.0.1'
     ```
     
 2. 通过Swift Package Manager在Package.swift添加依赖
     ```
     dependencies: [
-        .package(url: "https://github.com/lidongx/OOGDebugingKit.git", .upToNextMajor(from: "1.0.0"))
+        .package(url: "https://github.com/lidongx/OOGDebugingKit.git", .upToNextMajor(from: "1.0.1"))
     ]
     ```
 
@@ -20,7 +20,7 @@ OOGDebugingKit是替换掉UI界面上debug,crash,events等等一些按钮。
 
 1. 增加其它的自定义按钮
    ```
-    OOGDebugingKit.setup(onlyDebug: true, otherButtonsConfig: [
+    OOGDebugingKit.setup(otherButtonsConfig: [
         .init(buttonText: "HILKLMNOPQ", callback: { btn in
             Toast.message("Test1").show()
          }),
