@@ -73,6 +73,11 @@ class DebugingPanelWindow :  DebugingMovingWindow {
                 .Name(DebugingEvents.notificationKey),
             object: nil
         )
+        
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.1, execute: {
+            self.openedStateChanged()
+        })
+        
     }
     
     @objc func dataSourceUpdated(){

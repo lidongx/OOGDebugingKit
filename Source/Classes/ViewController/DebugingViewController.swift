@@ -172,7 +172,7 @@ public class CollectionItemCell : UICollectionViewCell {
     
     func display(_ type:ComponentType){
         let bundle = Bundle(for: OOGDebugingKit.self)
-        if let imagePath = bundle.path(forResource: type.icon, ofType: nil) {
+        if let imagePath = bundle.path(forResource:"OOGDebugingKit.bundle/\(type.icon)" , ofType: nil) {
             icon.image = UIImage(contentsOfFile: imagePath)?.with(.orange)
         }
         titleLabel.text = type.title

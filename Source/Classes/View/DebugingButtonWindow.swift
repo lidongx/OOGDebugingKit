@@ -61,7 +61,7 @@ class DebugingButtonWindow: DebugingMovingWindow {
         let res = UIImageView(frame: CGRect(x: 0, y: 100, width: 60, height: 60))
     
         let bundle = Bundle(for: OOGDebugingKit.self)
-        if let imagePath = bundle.path(forResource: "kit.png", ofType: nil) {
+        if let imagePath = bundle.path(forResource: "OOGDebugingKit.bundle/kit.png", ofType: nil) {
             res.image = UIImage(contentsOfFile: imagePath)
         }
         return res

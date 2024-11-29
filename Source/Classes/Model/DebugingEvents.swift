@@ -30,6 +30,9 @@ public class DebugingEvents {
         } else if platform == .firebase {
             firebaseEvents.append(.init(type: .event ,name: name, params: param))
         }
+        
+        NotificationCenter.default.post(name: Notification
+            .Name(DebugingEvents.notificationKey), object: nil)
     }
     
     public static func addUserProperty(
@@ -59,6 +62,9 @@ public class DebugingEvents {
                 )
             }
         }
+        
+        NotificationCenter.default.post(name: Notification
+            .Name(DebugingEvents.notificationKey), object: nil)
     }
     
     public static func addUserProperty(
