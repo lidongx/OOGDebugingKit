@@ -21,7 +21,7 @@ TODO: Add long description of the pod here.
   s.source_files = 'Source/Classes/**/*'
   s.static_framework = true
   
-  s.platform  = :ios, "15.0"
+  s.platform  = :ios, "14.0"
   
   s.swift_version = '5.0'
   
